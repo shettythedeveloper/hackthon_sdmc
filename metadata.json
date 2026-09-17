@@ -1,0 +1,6 @@
+{
+  "name": "Election Awareness Platform",
+  "description": "An interactive civic education and election awareness platform featuring stage-by-stage timelines, polling booth simulations, tailored voter guides, jargon busters, and AI election assistance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
