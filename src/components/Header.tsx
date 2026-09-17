@@ -1,5 +1,5 @@
 import React from 'react';
-import { Vote, Sparkles, Shield, Compass, BookOpen, Clock, Award, CheckSquare, MessageSquare } from 'lucide-react';
+import { Vote, Sparkles, Shield, Compass, BookOpen, Clock, Award, CheckSquare, MessageSquare, ShieldCheck } from 'lucide-react';
 import { VoterLevel } from '../types';
 
 interface HeaderProps {
@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'stages', label: 'Stages & Lifecycle', icon: Compass },
     { id: 'simulator', label: 'Booth Simulator', icon: Vote },
     { id: 'timeline', label: 'Timelines & Deadlines', icon: Clock },
+    { id: 'pledge', label: 'Voter Pledge & Rights', icon: ShieldCheck },
     { id: 'jargon', label: 'Jargon Buster', icon: BookOpen },
     { id: 'quiz', label: 'Civic Quiz', icon: Award },
     { id: 'plan', label: 'Plan My Vote', icon: CheckSquare },

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import confetti from 'canvas-confetti';
 import { Award, CheckCircle2, XCircle, ArrowRight, RotateCcw, Sparkles, ShieldCheck, HelpCircle } from 'lucide-react';
 import { QUIZ_QUESTIONS } from '../data/electionData';
 import { QuizQuestion } from '../types';
+import { playSuccessChime, playTactileClick } from '../utils/audio';
 
 export const VoterQuiz: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -15,6 +17,7 @@ export const VoterQuiz: React.FC = () => {
 
   const handleSelectOption = (index: number) => {
     if (isAnswerSubmitted) return;
+    playTactileClick(true);
     setSelectedOption(index);
   };
 
@@ -35,6 +38,17 @@ export const VoterQuiz: React.FC = () => {
       setIsAnswerSubmitted(false);
     } else {
       setIsFinished(true);
+      playSuccessChime(true);
+      try {
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.6 },
+          colors: ['#2563EB', '#10B981', '#F59E0B', '#8B5CF6'],
+        });
+      } catch (e) {
+        // Ignore
+      }
     }
   };
 

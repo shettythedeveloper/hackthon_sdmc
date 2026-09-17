@@ -74,3 +74,21 @@ export interface VoterPlanItem {
   description: string;
   completed: boolean;
 }
+
+export interface VoterPledge {
+  voterName: string;
+  constituency: string;
+  motivation: string;
+  pledgedAt: string;
+  token: string;
+}
+
+export interface StatutoryRight {
+  id: string;
+  title: string;
+  shortSummary: string;
+  legalProvision: string;
+  practicalAction: string;
+  category: 'Secrecy' | 'Accessibility' | 'Employment' | 'Integrity' | 'Remedy';
+  icon: string;
+}

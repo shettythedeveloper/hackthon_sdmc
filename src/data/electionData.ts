@@ -1,4 +1,4 @@
-import { ElectionStage, PollingStationStep, JargonTerm, QuizQuestion, TimelineMilestone } from '../types';
+import { ElectionStage, PollingStationStep, JargonTerm, QuizQuestion, TimelineMilestone, StatutoryRight } from '../types';
 
 export const ELECTION_STAGES: ElectionStage[] = [
   {
@@ -509,4 +509,91 @@ export const DEFAULT_VOTER_PLAN_ITEMS = [
   { id: '4', label: 'Review candidates & sworn affidavits', description: 'Check education, assets, criminal history, and party manifestos.', completed: false },
   { id: '5', label: 'Set your voting time slot (early morning recommended)', description: 'Beating midday queues ensures a quick, stress-free experience.', completed: false },
   { id: '6', label: 'Remind 3 friends or family members to vote', description: 'Spread democratic awareness to first-time youth and elderly neighbors.', completed: false }
+];
+
+export const STATUTORY_RIGHTS: StatutoryRight[] = [
+  {
+    id: 'queue-rule',
+    title: 'The 6:00 PM Queue Rule',
+    shortSummary: 'If you are physically in line by closing time, polling MUST stay open until you vote.',
+    legalProvision: 'Section 56, Conduct of Elections Rules',
+    practicalAction: 'The Presiding Officer counts backwards from the last person in queue at 6:00 PM, distributes numbered slips, and guarantees everyone votes.',
+    category: 'Integrity',
+    icon: 'Clock'
+  },
+  {
+    id: 'paid-leave',
+    title: '100% Paid Holiday from Work',
+    shortSummary: 'Every registered employee is statutorily entitled to a paid day off on polling day.',
+    legalProvision: 'Section 135B, Representation of the People Act',
+    practicalAction: 'No deduction or abatement of wages can be made by any public or private employer. Violations carry financial penalties and prosecution.',
+    category: 'Employment',
+    icon: 'Briefcase'
+  },
+  {
+    id: 'secrecy-ballot',
+    title: 'Constitutional Secrecy of Vote',
+    shortSummary: 'Nobody—not police, candidates, party agents, or family—can view your ballot.',
+    legalProvision: 'Section 128, Secrecy of Voting Mandate',
+    practicalAction: 'The voting compartment is fully enclosed. Taking photos, videos, or selfies of your vote is a punishable offense under criminal law.',
+    category: 'Secrecy',
+    icon: 'Lock'
+  },
+  {
+    id: 'tendered-ballots',
+    title: 'Tendered Ballot Protection',
+    shortSummary: 'If an imposter falsely voted in your name, your real vote cannot be rejected.',
+    legalProvision: 'Rule 49P, Tendered Votes Procedure',
+    practicalAction: 'You prove your identity to the Presiding Officer and cast your vote on a special physical paper ballot that is sealed and preserved for court review.',
+    category: 'Remedy',
+    icon: 'ShieldAlert'
+  },
+  {
+    id: 'universal-access',
+    title: 'Universal Accessibility & Companion Voting',
+    shortSummary: 'Braille markings on EVMs, ground-floor ramps, and companion assistance for differently-abled voters.',
+    legalProvision: 'Rule 49N, Accessible Voting Rights',
+    practicalAction: 'Visually impaired or physically challenged voters may bring an adult companion (aged 18+) to record their vote behind the booth under sworn secrecy.',
+    category: 'Accessibility',
+    icon: 'HeartHandshake'
+  },
+  {
+    id: 'anti-bribery',
+    title: '100-Minute Anti-Corruption Action',
+    shortSummary: 'Report cash, alcohol, or illicit inducement distribution anonymously via cVigil.',
+    legalProvision: 'Model Code of Conduct & Section 171B IPC',
+    practicalAction: 'Any geotagged photo or 2-minute video uploaded triggers a flying squad deployment within 15 minutes and verification within 100 minutes.',
+    category: 'Integrity',
+    icon: 'AlertTriangle'
+  }
+];
+
+export const ELECTION_COUNTDOWN_EVENTS = [
+  {
+    id: 'general',
+    name: 'National Parliamentary Election',
+    description: 'Electing Members of Parliament across federal constituencies',
+    targetDate: '2026-10-24T07:00:00',
+    phase: 'Pre-Election Preparation',
+    rollCloseDays: 14,
+    silenceHours: 48
+  },
+  {
+    id: 'assembly',
+    name: 'State Legislative Assembly Election',
+    description: 'Electing Members of Legislative Assembly for state governance',
+    targetDate: '2026-11-15T07:00:00',
+    phase: 'Voter Roll Revision',
+    rollCloseDays: 10,
+    silenceHours: 48
+  },
+  {
+    id: 'municipal',
+    name: 'City Council & Municipal Corporation',
+    description: 'Local ward governance, municipal councillors, and mayor election',
+    targetDate: '2026-12-05T07:00:00',
+    phase: 'Delimitation Complete',
+    rollCloseDays: 7,
+    silenceHours: 24
+  }
 ];

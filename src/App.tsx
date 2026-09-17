@@ -11,6 +11,8 @@ import { TimelineView } from './components/TimelineView';
 import { JargonBuster } from './components/JargonBuster';
 import { VoterQuiz } from './components/VoterQuiz';
 import { VoterPlan } from './components/VoterPlan';
+import { VoterPledgeCard } from './components/VoterPledgeCard';
+import { ElectionCountdownBanner } from './components/ElectionCountdownBanner';
 import { AICivicAssistant } from './components/AICivicAssistant';
 import { VoterLevel } from './types';
 import { 
@@ -23,7 +25,8 @@ import {
   Clock, 
   BookOpen, 
   Award, 
-  CheckSquare 
+  CheckSquare,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function App() {
@@ -50,9 +53,15 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
+        {/* Live Election Countdown Ticker Banner */}
+        <ElectionCountdownBanner />
+
         {/* Quick Highlights Civic Ribbon */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center gap-3">
+          <div 
+            onClick={() => setActiveTab('stages')}
+            className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs hover:border-blue-300 transition-colors cursor-pointer flex items-center gap-3"
+          >
             <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0 font-bold text-xs">
               05
             </div>
@@ -64,7 +73,10 @@ export default function App() {
             </div>
           </div>
 
-          <div className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center gap-3">
+          <div 
+            onClick={() => setActiveTab('simulator')}
+            className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs hover:border-emerald-300 transition-colors cursor-pointer flex items-center gap-3"
+          >
             <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 font-bold text-xs">
               04
             </div>
@@ -76,14 +88,17 @@ export default function App() {
             </div>
           </div>
 
-          <div className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center gap-3">
+          <div 
+            onClick={() => setActiveTab('pledge')}
+            className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-2xs hover:border-indigo-300 transition-colors cursor-pointer flex items-center gap-3"
+          >
             <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center shrink-0">
               <Shield className="w-4 h-4" />
             </div>
             <div className="truncate">
               <span className="text-[11px] text-slate-500 font-medium block">Constitutional Right</span>
               <span className="text-xs sm:text-sm font-bold text-slate-900 truncate block">
-                100% Secret Ballot
+                Voter Pledge & Rights
               </span>
             </div>
           </div>
@@ -113,6 +128,8 @@ export default function App() {
         {activeTab === 'simulator' && <BoothSimulator />}
 
         {activeTab === 'timeline' && <TimelineView />}
+
+        {activeTab === 'pledge' && <VoterPledgeCard />}
 
         {activeTab === 'jargon' && <JargonBuster onAskAI={handleAskAI} />}
 
@@ -165,6 +182,12 @@ export default function App() {
                 className="hover:text-white transition-colors"
               >
                 Timelines
+              </button>
+              <button
+                onClick={() => setActiveTab('pledge')}
+                className="hover:text-white transition-colors"
+              >
+                Pledge & Rights
               </button>
               <button
                 onClick={() => setActiveTab('jargon')}
